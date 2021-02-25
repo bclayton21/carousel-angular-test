@@ -1,0 +1,77 @@
+
+<div class="carousel-inner-container" (swipe)="onSwipe($event)" #carouselEl>
+
+    <ng-container *ngFor="let slide of slides; let i = index">
+
+        <div
+            *ngIf="i === current_slide && this.slide_direction == 'right'"
+            style="background: url('{{ slide.media.desktop }}');"
+            class="slide {{ (slide.cta.length > 1) ? 'left' : 'center' }}"
+            [@slideInFromRight]="slide_direction"
+        ></div>
+        
+        <div
+            *ngIf="i === current_slide && this.slide_direction == 'left'"
+            style="background: url('{{ slide.media.desktop }}');"
+            class="slide {{ (slide.cta.length > 1) ? 'left' : 'center' }}"
+            [@slideInFromLeft]="slide_direction"
+        ></div>
+
+        <div 
+            *ngIf="i === current_slide"
+            class="slide-cta-container {{ slide.ctaPosition }}"
+        >
+
+            <ng-container *ngIf="slide.title">
+                <h1>{{ slide.title }}</h1>
+            </ng-container>
+    
+            <ng-container *ngIf="slide.heading">
+                <h4>{{ slide.heading }}</h4>
+            </ng-container>
+    
+            <ng-container *ngIf="slide.subhead">
+                <p>{{ slide.subhead }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="slide.cta.length > 0">
+    
+                <ng-container *ngFor="let cta of slide.cta">
+                    <a href="{{ cta.url }}" target="_blank">{{ cta.label }}</a>
+                </ng-container>
+    
+            </ng-container>
+
+        </div>
+
+    </ng-container>
+  
+    <button class="navigation previous" (click)="previous()">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.75 69.88"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="0 35.12 1.17 36.27 36.75 1.16 35.58 0 0 35.12"/><polygon class="cls-1" points="0 35.12 1.16 33.97 36.39 68.74 35.23 69.88 0 35.12"/></g></g></svg>
+
+    </button>
+
+    <button class="navigation next" (click)="next()">
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.75 69.88"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="1.17 0 0 1.16 35.58 36.27 36.75 35.12 1.17 0"/><polygon class="cls-1" points="1.52 69.88 0.36 68.74 35.59 33.97 36.75 35.12 1.52 69.88"/></g></g></svg>
+
+    </button>
+
+    <ul class="slider-bullets">
+
+        <ng-container *ngFor="let slide of slides; let i = index">
+
+            <ng-container *ngIf="i === current_slide">
+                <li class="bullet active"></li>
+            </ng-container>
+
+            <ng-container *ngIf="i !== current_slide">
+                <li class="bullet"></li>
+            </ng-container>
+
+        </ng-container>
+
+    </ul>
+
+</div>

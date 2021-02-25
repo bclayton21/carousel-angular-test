@@ -1,0 +1,21 @@
+
+@mixin breakpoint($breakpoint){
+    @if type-of($breakpoint) == number {
+        @media(min-width: $breakpoint){ @content; }
+    }
+    @else if $breakpoint == xs {
+        @media(min-width: $breakpoint-xs){ @content; }
+    }
+    @else if $breakpoint == md {
+        @media(min-width: $breakpoint-md){ @content; }
+    }
+    @else if $breakpoint == lg {
+        @media(min-width: $breakpoint-lg){ @content; }
+    }
+    @else if $breakpoint == xl {
+        @media(min-width: $breakpoint-xl){ @content; }
+    }
+    @else {
+        @warn "Breakpoint mixin supports: 'xs', 'md', 'lg', 'xl', and custom pixel units"
+    }
+}
