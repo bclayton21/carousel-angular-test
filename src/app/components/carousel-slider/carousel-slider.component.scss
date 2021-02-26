@@ -36,6 +36,7 @@
             &.right {
                 position: absolute;
                 right: 0px;
+                width: 42%;
                 padding-right: 30px;
                 text-align: left;
             }
@@ -107,17 +108,26 @@
         background-size: cover !important;
         background-position: top center !important;
 
-        &.left {
+        &.center {
             background-position: top left !important;
+        }
+
+        &.left {
+            background-position: 70% !important;
+        }
+
+        &.right {
+            background-position: 40% !important;
         }
 
         @include breakpoint($breakpoint-lg){
             left: auto;
             background-position: top center !important;
 
-            &.left {
+            &.center, &.left, &.right {
                 background-position: top center !important;
             }
+
         }
 
     }
@@ -128,9 +138,9 @@
 
     .navigation {
         position: absolute;
-        display: none;
         flex-direction: column;
         justify-content: center;
+        top: 35vh;
         height: 100%;
         padding: 0.5em;
         border: none;
@@ -138,16 +148,25 @@
         cursor: pointer;
         outline: 0;
         z-index: 2;
-        
+
         @include breakpoint($breakpoint-md){
             display: flex;
+            top: auto;
         }
 
         &.next {
-            right: 20px;
+            right: 10px;
+
+            @include breakpoint($breakpoint-md){
+                right: 20px;
+            }
         }
         &.previous {
-            left: 20px;
+            left: 10px;
+
+            @include breakpoint($breakpoint-md){
+                left: 20px;
+            }
         }
 
         svg {
@@ -173,6 +192,7 @@
             border: 1px solid #ffffff;
             background-color: #ffffff;
             opacity: .3;
+            cursor: pointer;
 
             &.active {
                 background-color: #ffffff;

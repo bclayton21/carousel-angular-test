@@ -6,14 +6,14 @@
         <div
             *ngIf="i === current_slide && this.slide_direction == 'right'"
             style="background: url('{{ slide.media.desktop }}');"
-            class="slide {{ (slide.cta.length > 1) ? 'left' : 'center' }}"
+            class="slide {{ slide.ctaPosition }}"
             [@slideInFromRight]="slide_direction"
         ></div>
         
         <div
             *ngIf="i === current_slide && this.slide_direction == 'left'"
             style="background: url('{{ slide.media.desktop }}');"
-            class="slide {{ (slide.cta.length > 1) ? 'left' : 'center' }}"
+            class="slide {{ slide.ctaPosition }}"
             [@slideInFromLeft]="slide_direction"
         ></div>
 
@@ -67,7 +67,7 @@
             </ng-container>
 
             <ng-container *ngIf="i !== current_slide">
-                <li class="bullet"></li>
+                <li class="bullet" (click)="selectSlide(i)"></li>
             </ng-container>
 
         </ng-container>

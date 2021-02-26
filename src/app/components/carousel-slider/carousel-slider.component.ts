@@ -156,4 +156,8 @@ export class CarouselSliderComponent implements OnInit {
 
 	}
 
+	selectSlide(index: number){
+		this.current_slide = index;
+	}
+
 }
